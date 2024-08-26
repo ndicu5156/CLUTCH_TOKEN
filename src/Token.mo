@@ -20,15 +20,16 @@ shared ({ caller = _owner }) actor class Token  (args: ?{
     icrc4 : ?ICRC4.InitArgs;
   }
 ) = this{
-
+    let ADMIN_PRINCIPAL = Principal.fromText("bn6ej-hpaap-7gbna-n3hiw-xsv7o-ucmfj-suedu-fd6pt-mvrea-4awa4-pqe");
+  
     let default_icrc1_args : ICRC1.InitArgs = {
-      name = ?"Test Token";
-      symbol = ?"TTT";
+      name = ?"TORI Coin";
+      symbol = ?"TCN";
       logo = ?"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InJlZCIvPjwvc3ZnPg==";
       decimals = 8;
       fee = ?#Fixed(10000);
       minting_account = ?{
-        owner = _owner;
+        owner =   Principal.fromText ("bn6ej-hpaap-7gbna-n3hiw-xsv7o-ucmfj-suedu-fd6pt-mvrea-4awa4-pqe");
         subaccount = null;
       };
       max_supply = null;

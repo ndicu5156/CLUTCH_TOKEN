@@ -1,0 +1,218 @@
+// Version: 1.0.0
+type Account = {owner : Principal; subaccount : ?Subaccount};
+type Account__4 = {owner : Principal; subaccount : ?Subaccount__2};
+type Accounts = Map__12<Account, Balance>;
+type ApprovalInfo =
+  {
+    amount : Nat;
+    expires_at : ?Nat64;
+    from_subaccount : ?Blob;
+    spender : Account__4
+  };
+type Balance = Nat;
+type BlockType = {block_type : Text; url : Text};
+type Burn =
+  {
+    amount : Balance;
+    created_at_time : ?Timestamp;
+    from : Account;
+    memo : ?Memo
+  };
+type Fee = {#Environment; #Fixed : Nat};
+type Fee__2 = {#Environment; #Fixed : Nat; #ICRC1};
+type Fee__4 = {#Environment; #Fixed : Nat; #ICRC1};
+type Hash__1 = Blob;
+type IndexType = {#Managed; #Stable; #StableTyped};
+type Indexes =
+  {
+    owner_to_approval_account : Map__12<Account__4, Set__12<Account__4>>;
+    spender_to_approval_account : Map__12<Account__4, Set__12<Account__4>>
+  };
+type Interval = {len : IntervalLength; prefix : Prefix};
+type IntervalLength = Nat;
+type Key = Blob;
+type LabeledTree = {#leaf : Leaf; #subtree : OT};
+type Leaf = {leaf_hash : Hash__1; value : Value};
+type LedgerInfo =
+  {
+    var fee : Fee__2;
+    var max_allowance : ?MaxAllowance;
+    var max_approvals : Nat;
+    var max_approvals_per_account : Nat;
+    var metadata : ?Value__6;
+    var settle_to_approvals : Nat
+  };
+type LedgerInfo__2 =
+  {
+    var fee : Fee__4;
+    var max_balances : Nat;
+    var max_transfers : Nat;
+    var metadata : ?Value__12
+  };
+type Map<K, V> = [var ?([var ?K], [var ?V], [var Nat], [var Nat32])];
+type Map__12<K, V> = Map<K, V>;
+type MaxAllowance = {#Fixed : Nat; #TotalSupply};
+type Memo = Blob;
+type Mint =
+  {
+    amount : Balance;
+    created_at_time : ?Timestamp;
+    memo : ?Memo;
+    to : Account
+  };
+type OT = ?T__81;
+type Prefix = [Nat8];
+type Prefix__1 = [Nat8];
+type Set<K> = [var ?([var ?K], [var Nat], [var Nat32])];
+type Set__12<K> = Set<K>;
+type State =
+  {
+    var _burned_tokens : Nat;
+    var _fee : ?Fee;
+    var _minted_tokens : Nat;
+    var accounts : Accounts;
+    var cleaning_timer : ?Nat;
+    var decimals : Nat8;
+    var fee_collector : ?Account;
+    var fee_collector_block : Nat;
+    var fee_collector_emitted : Bool;
+    var local_transactions : Vector<Transaction>;
+    var logo : ?Text;
+    var max_accounts : Nat;
+    var max_memo : Nat;
+    var max_supply : ?Nat;
+    var metadata : ?Value__2;
+    var min_burn_amount : ?Nat;
+    var minting_account : Account;
+    var name : ?Text;
+    var permitted_drift : Nat64;
+    var recent_transactions : Map__12<Blob, (Nat64, Nat)>;
+    var settle_to_accounts : Nat;
+    var supported_standards : ?Vector<SupportedStandard>;
+    var symbol : ?Text;
+    var transaction_window : Nat64
+  };
+type State__10 = {ledger_info : LedgerInfo__2};
+type State__4 =
+  {
+    indexes : Indexes;
+    ledger_info : LedgerInfo;
+    token_approvals : Map__12<(Account__4, Account__4), ApprovalInfo>
+  };
+type State__7 =
+  {
+    archives : Map__12<Principal, TransactionRange>;
+    var bCleaning : Bool;
+    var cleaningTimer : ?Nat;
+    constants :
+      {
+        archiveProperties :
+          {
+            var archiveControllers : ??[Principal];
+            var archiveCycles : Nat;
+            var archiveIndexType : IndexType;
+            var maxActiveRecords : Nat;
+            var maxArchivePages : Nat;
+            var maxRecordsInArchiveInstance : Nat;
+            var maxRecordsToArchive : Nat;
+            var settleToRecords : Nat
+          }
+      };
+    var firstIndex : Nat;
+    var lastIndex : Nat;
+    var latest_hash : ?Blob;
+    var ledger : Vector<Transaction__5>;
+    ledgerCanister : Principal;
+    supportedBlocks : Vector<BlockType>
+  };
+type Subaccount = Blob;
+type Subaccount__2 = Blob;
+type SupportedStandard = {name : Text; url : Text};
+type T__81 =
+  {
+    #fork : {hash : Hash__1; interval : Interval; left : T__81; right : T__81};
+    #prefix :
+      {
+        here : LabeledTree;
+        key : Key;
+        labeled_hash : Hash__1;
+        prefix : Prefix__1;
+        rest : OT;
+        tree_hash : Hash__1
+      }
+  };
+type Timestamp = Nat64;
+type Transaction =
+  {
+    burn : ?Burn;
+    index : TxIndex;
+    kind : Text;
+    mint : ?Mint;
+    timestamp : Timestamp;
+    transfer : ?Transfer
+  };
+type TransactionRange = {length : Nat; start : Nat};
+type Transaction__5 = Value__8;
+type Transfer =
+  {
+    amount : Balance;
+    created_at_time : ?Timestamp;
+    fee : ?Balance;
+    from : Account;
+    memo : ?Memo;
+    to : Account
+  };
+type Tree = LabeledTree;
+type TxIndex = Nat;
+type Value = Blob;
+type Value__12 =
+  {
+    #Array : [Value__12];
+    #Blob : Blob;
+    #Int : Int;
+    #Map : [(Text, Value__12)];
+    #Nat : Nat;
+    #Text : Text
+  };
+type Value__2 =
+  {
+    #Array : [Value__2];
+    #Blob : Blob;
+    #Int : Int;
+    #Map : [(Text, Value__2)];
+    #Nat : Nat;
+    #Text : Text
+  };
+type Value__6 =
+  {
+    #Array : [Value__6];
+    #Blob : Blob;
+    #Int : Int;
+    #Map : [(Text, Value__6)];
+    #Nat : Nat;
+    #Text : Text
+  };
+type Value__8 =
+  {
+    #Array : [Value__8];
+    #Blob : Blob;
+    #Int : Int;
+    #Map : [(Text, Value__8)];
+    #Nat : Nat;
+    #Text : Text
+  };
+type Vector<X> =
+  {var data_blocks : [var [var ?X]]; var i_block : Nat; var i_element : Nat};
+actor {
+  stable var _init : Bool;
+  stable cert_store : {var tree : Tree};
+  stable icrc1_migration_state :
+    {#v0_0_0 : {#data; #id}; #v0_1_0 : {#data : State; #id}};
+  stable icrc2_migration_state :
+    {#v0_0_0 : {#data; #id}; #v0_1_0 : {#data : State__4; #id}};
+  stable icrc3_migration_state :
+    {#v0_0_0 : {#data; #id}; #v0_1_0 : {#data : State__7; #id}};
+  stable icrc4_migration_state :
+    {#v0_0_0 : {#data; #id}; #v0_1_0 : {#data : State__10; #id}};
+  stable var owner : Principal
+};

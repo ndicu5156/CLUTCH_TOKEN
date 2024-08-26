@@ -7,7 +7,7 @@ set -ex
 # --- Configuration Section ---
 
 # Identity configuration. Replace '{production_identity}' with your production identity name. This identity needs to be a controller for your canister
-PRODUCTION_IDENTITY="{production_identity}"
+PRODUCTION_IDENTITY="bn6ej-hpaap-7gbna-n3hiw-xsv7o-ucmfj-suedu-fd6pt-mvrea-4awa4-pqe"
 dfx identity use $PRODUCTION_IDENTITY
 
 # Canister identitfication - You need to create this canister either via dfx or throught the nns console
@@ -18,8 +18,8 @@ PRODUCTION_CANISTER="{production_canister}"
 
 
 # Token configuration
-TOKEN_NAME="Test Token"
-TOKEN_SYMBOL="TTT"
+TOKEN_NAME="Tori Coin"
+TOKEN_SYMBOL="TCN"
 TOKEN_LOGO="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InJlZCIvPjwvc3ZnPg=="
 TOKEN_DECIMALS=8
 TOKEN_FEE=10000
